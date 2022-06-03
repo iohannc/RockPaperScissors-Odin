@@ -79,7 +79,7 @@ function playGame() {
       console.log("GAME FINISHED");
       return;
     } else {
-      result = playRound(computerPlay(), computerPlay());
+      result = playRound(playerSelection, computerPlay());
       if (result.playerWon || result.computerWon) {
         if (result.playerWon) {
           console.log(result.message);
@@ -99,4 +99,32 @@ function playGame() {
     }
   }
 }
-playGame();
+
+let playerScore = 0;
+let computerScore = 0;
+const scoreTable = document.querySelector(".scoreTable");
+const roundResultMessage = document.createElement("div");
+const mainSection = document.querySelector("main");
+mainSection.appendChild(roundResultMessage);
+
+const handButtons = document.querySelectorAll(".hand");
+handButtons.forEach((handButton) => {
+  handButton.addEventListener("click", (e) => {
+    let playerSelection = handButton.attributes["data-handType"].value;
+    let result = playRound(playerSelection, computerPlay());
+    if (result.playerWon || result.computerWon) {
+      if (result.playerWon) {
+        roundResultMessage.textContent = result.message;
+        playerScore++;
+        scoreTable.textContent = `PLAYER: ${playerScore} | COMPUTER: ${computerScore}`;
+      } else {
+        roundResultMessage.textContent = result.message;
+        computerScore++;
+        scoreTable.textContent = `PLAYER: ${playerScore} | COMPUTER: ${computerScore}`;
+      }
+    } else {
+      scoreTable.textContent = `PLAYER: ${playerScore} | COMPUTER: ${computerScore}`;
+      roundResultMessage.textContent = result.message;
+    }
+  });
+});

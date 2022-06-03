@@ -1,0 +1,39 @@
+*, ::before, ::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+}
+.container {
+  height: 100vh;
+}
+
+main {
+  display: flex;
+  height: 80%;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  /* border: 1px solid black; */
+}
+
+.scoreTable {
+  margin-top: 300px;
+}
+
+.handsSection {
+  display: flex;
+  gap: 10px;
+}
+
+.hand {
+  width: 100px;
+  height: 100px;
+  border: 1px solid black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
