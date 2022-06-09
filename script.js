@@ -70,35 +70,35 @@ function playRound(playerSelection, computerSelection) {
   }
 }
 
-function playGame() {
-  let playerScore = 0;
-  let computerScore = 0;
-  let result;
-  while (true) {
-    if (playerScore == 5 || computerScore == 5) {
-      console.log("GAME FINISHED");
-      return;
-    } else {
-      result = playRound(playerSelection, computerPlay());
-      if (result.playerWon || result.computerWon) {
-        if (result.playerWon) {
-          console.log(result.message);
-          playerScore++;
-          console.log(`PLAYER: ${playerScore} | COMPUTER: ${computerScore}`);
-        } else {
-          console.log(result.message);
-          computerScore++;
-          console.log(`PLAYER: ${playerScore} | COMPUTER: ${computerScore}`);
-        }
-      } else
-        console.log(
-          result.message +
-            "\n" +
-            `PLAYER: ${playerScore} | COMPUTER: ${computerScore}`
-        );
-    }
-  }
-}
+// function playGame() {
+//   let playerScore = 0;
+//   let computerScore = 0;
+//   let result;
+//   while (true) {
+//     if (playerScore == 5 || computerScore == 5) {
+//       console.log("GAME FINISHED");
+//       return;
+//     } else {
+//       result = playRound(playerSelection, computerPlay());
+//       if (result.playerWon || result.computerWon) {
+//         if (result.playerWon) {
+//           console.log(result.message);
+//           playerScore++;
+//           console.log(`PLAYER: ${playerScore} | COMPUTER: ${computerScore}`);
+//         } else {
+//           console.log(result.message);
+//           computerScore++;
+//           console.log(`PLAYER: ${playerScore} | COMPUTER: ${computerScore}`);
+//         }
+//       } else
+//         console.log(
+//           result.message +
+//             "\n" +
+//             `PLAYER: ${playerScore} | COMPUTER: ${computerScore}`
+//         );
+//     }
+//   }
+// }
 
 let playerScore = 0;
 let computerScore = 0;
