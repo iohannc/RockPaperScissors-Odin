@@ -102,7 +102,9 @@ function playGame() {
 
 let playerScore = 0;
 let computerScore = 0;
-const scoreTable = document.querySelector(".scoreTable");
+const playerScoreOnTable = document.querySelector('#playerScore');
+const computerScoreOnTable = document.querySelector('#computerScore');
+// const scoreTable = document.querySelector(".scoreTable");
 const roundResultMessage = document.createElement("div");
 const mainSection = document.querySelector("main");
 mainSection.appendChild(roundResultMessage);
@@ -116,14 +118,13 @@ handButtons.forEach((handButton) => {
       if (result.playerWon) {
         roundResultMessage.textContent = result.message;
         playerScore++;
-        scoreTable.textContent = `PLAYER: ${playerScore} | COMPUTER: ${computerScore}`;
+        playerScoreOnTable.textContent = playerScore;
       } else {
         roundResultMessage.textContent = result.message;
         computerScore++;
-        scoreTable.textContent = `PLAYER: ${playerScore} | COMPUTER: ${computerScore}`;
+        computerScoreOnTable.textContent = computerScore;
       }
     } else {
-      scoreTable.textContent = `PLAYER: ${playerScore} | COMPUTER: ${computerScore}`;
       roundResultMessage.textContent = result.message;
     }
   });
