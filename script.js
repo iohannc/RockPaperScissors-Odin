@@ -70,41 +70,10 @@ function playRound(playerSelection, computerSelection) {
   }
 }
 
-// function playGame() {
-//   let playerScore = 0;
-//   let computerScore = 0;
-//   let result;
-//   while (true) {
-//     if (playerScore == 5 || computerScore == 5) {
-//       console.log("GAME FINISHED");
-//       return;
-//     } else {
-//       result = playRound(playerSelection, computerPlay());
-//       if (result.playerWon || result.computerWon) {
-//         if (result.playerWon) {
-//           console.log(result.message);
-//           playerScore++;
-//           console.log(`PLAYER: ${playerScore} | COMPUTER: ${computerScore}`);
-//         } else {
-//           console.log(result.message);
-//           computerScore++;
-//           console.log(`PLAYER: ${playerScore} | COMPUTER: ${computerScore}`);
-//         }
-//       } else
-//         console.log(
-//           result.message +
-//             "\n" +
-//             `PLAYER: ${playerScore} | COMPUTER: ${computerScore}`
-//         );
-//     }
-//   }
-// }
-
 let playerScore = 0;
 let computerScore = 0;
 const playerScoreOnTable = document.querySelector('#playerScore');
 const computerScoreOnTable = document.querySelector('#computerScore');
-// const scoreTable = document.querySelector(".scoreTable");
 const roundResultMessage = document.createElement("div");
 roundResultMessage.classList.add('roundResult')
 const mainSection = document.querySelector("main");
@@ -114,7 +83,9 @@ const handButtons = document.querySelectorAll(".hand");
 handButtons.forEach((handButton) => {
   handButton.addEventListener("click", (e) => {
     handButton.classList.add('clicked');
-
+    // Updates DOM with data received from the object returned by playRound()
+    // The object has two booleans (playerWon and computerWon) and a string
+    // 'message' which announces the result of the round.
     let playerSelection = handButton.attributes["data-handType"].value;
     let result = playRound(playerSelection, computerPlay());
     if (result.playerWon || result.computerWon) {
@@ -122,10 +93,12 @@ handButtons.forEach((handButton) => {
         roundResultMessage.textContent = result.message;
         playerScore++;
         playerScoreOnTable.textContent = playerScore;
+        if (playerScore == 5) endGame('Player');
       } else {
         roundResultMessage.textContent = result.message;
         computerScore++;
         computerScoreOnTable.textContent = computerScore;
+        if (computerScore == 5) endGame('Computer');
       }
     } else {
       roundResultMessage.textContent = result.message;
@@ -133,6 +106,7 @@ handButtons.forEach((handButton) => {
   });
 });
 
+// Button animations 
 handButtons.forEach(handButton => {
   handButton.addEventListener('mouseover', (e) => {
     handButton.classList.add('hovering');
@@ -152,3 +126,11 @@ handButtons.forEach(handButton => {
     }
   })
 });
+
+function endGame(winner) {
+  alert(`Game finished! ${winner} wins!`);
+  playerScore = 0;
+  computerScore = 0;
+  playerScoreOnTable.textContent = 0;
+  computerScoreOnTable.textContent = 0;
+}
