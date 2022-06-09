@@ -106,12 +106,15 @@ const playerScoreOnTable = document.querySelector('#playerScore');
 const computerScoreOnTable = document.querySelector('#computerScore');
 // const scoreTable = document.querySelector(".scoreTable");
 const roundResultMessage = document.createElement("div");
+roundResultMessage.classList.add('roundResult')
 const mainSection = document.querySelector("main");
 mainSection.appendChild(roundResultMessage);
 
 const handButtons = document.querySelectorAll(".hand");
 handButtons.forEach((handButton) => {
   handButton.addEventListener("click", (e) => {
+    handButton.classList.add('clicked');
+
     let playerSelection = handButton.attributes["data-handType"].value;
     let result = playRound(playerSelection, computerPlay());
     if (result.playerWon || result.computerWon) {
@@ -140,4 +143,12 @@ handButtons.forEach(handButton => {
   handButton.addEventListener('mouseout', (e) => {
     handButton.classList.remove('hovering');
   })
-})
+});
+
+handButtons.forEach(handButton => {
+  handButton.addEventListener('transitionend', (e) => {
+    if (handButton.classList.contains('clicked')) {
+      handButton.classList.remove('clicked');
+    }
+  })
+});

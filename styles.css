@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap');
 :root {
-  --body-background: rgb(63, 94, 124);
+  --body-background: rgb(98, 132, 165);
+  --selected-border-color: rgb(255, 228, 73);
 }
 
 html {
@@ -31,7 +32,7 @@ header {
 
 header h1 {
   font-family: 'Shadows Into Light', sans-serif;
-  font-size: 2.5em;
+  font-size: 3em;
   color: rgb(0, 0, 0);
 }
 
@@ -41,7 +42,7 @@ header h1 {
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid black;
+  /* border: 1px solid black; */
 }
 
 main {
@@ -51,16 +52,22 @@ main {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  border: 1px solid black;
+  /* border: 1px solid black; */
 }
 
 .scoreTable {
   position: relative;
-  top: -75px;
+  top: -60px;
+  display: flex;
+  justify-content: space-between;
+  width: 60%;
+  font-family: 'Shadows Into Light', sans-serif;
+  font-size: 2.2em;
 }
 
 .handsSection {
   display: flex;
+  flex-wrap: nowrap;
   gap: 30px;
   margin-top: 100px;
   margin-bottom: 50px;
@@ -71,16 +78,36 @@ main {
   height: 100px;
   border-radius: 10px;
   border: 2px solid black;
-  background-color: rgb(181, 204, 231);
+  background-color: rgb(184, 205, 228);
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: border .2s, transform .3s;
+  transition: border .2s, transform .3s, box-shadow .1s;
 }
 
 .hovering {
-  border: 5px solid rgb(230, 197, 13);
+  border: 5px solid var(--selected-border-color);
   transform: scale(1.1, 1.1);
   /* position: relative;
   bottom: 30px; */
+}
+
+.clicked {
+  box-shadow: 1px 1px 10px 4px var(--selected-border-color);
+}
+
+.roundResult {
+  font-family: 'Shadows Into Light', sans-serif; 
+  font-size: 2em;
+  height: 10px;
+}
+
+footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  font-size: .7em;
+  margin-bottom: 10px;
 }
