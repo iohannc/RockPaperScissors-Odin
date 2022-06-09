@@ -129,3 +129,15 @@ handButtons.forEach((handButton) => {
     }
   });
 });
+
+handButtons.forEach(handButton => {
+  handButton.addEventListener('mouseover', (e) => {
+    handButton.classList.add('hovering');
+  })
+});
+
+handButtons.forEach(handButton => {
+  handButton.addEventListener('mouseout', (e) => {
+    handButton.classList.remove('hovering');
+  })
+})

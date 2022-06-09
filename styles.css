@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap');
 :root {
   --body-background: rgb(63, 94, 124);
 }
@@ -24,6 +25,14 @@ body {
 header {
   position: relative;
   bottom: 25px;
+  width: 100%;
+  text-align: center;
+}
+
+header h1 {
+  font-family: 'Shadows Into Light', sans-serif;
+  font-size: 2.5em;
+  color: rgb(0, 0, 0);
 }
 
 .container {
@@ -61,8 +70,17 @@ main {
   width: 100px;
   height: 100px;
   border-radius: 10px;
-  border: 1px solid black;
+  border: 2px solid black;
+  background-color: rgb(181, 204, 231);
   display: flex;
   justify-content: center;
   align-items: center;
+  transition: border .2s, transform .3s;
+}
+
+.hovering {
+  border: 5px solid rgb(230, 197, 13);
+  transform: scale(1.1, 1.1);
+  /* position: relative;
+  bottom: 30px; */
 }
